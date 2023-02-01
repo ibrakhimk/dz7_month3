@@ -16,6 +16,7 @@ class SecondFragment : Fragment() {
     companion object{
         const val KEY_FOR_USERNAME = "User"
         const val KEY_FOR_PASSWORD = "password"
+        const val KEY_FOR_IMG = "Img"
     }
 
     private lateinit var binding: FragmentSecondBinding
@@ -39,14 +40,20 @@ class SecondFragment : Fragment() {
 
     private fun loadData() {
         rickAndMortyList.apply {
-            add(RickAndMorty("Alive","Rick Sanchez"))
-            add(RickAndMorty("Alive","Morty Smith"))
-            add(RickAndMorty("Dead","Albert Einstein"))
-            add(RickAndMorty("Alive","Jerry Smith"))
+            add(RickAndMorty("Alive","Rick ","https://i.pinimg.com/originals/0d/82/2c/0d822cc58bf00ddca38ea288b08a6bed.jpg"))
+            add(RickAndMorty("Alive","Morty Smith","https://i.pinimg.com/736x/66/83/da/6683da6fc8f5321d2dcb6023e03df4fb.jpg"))
+            add(RickAndMorty("Dead","Albert Einstein","https://i.pinimg.com/564x/e6/a4/c6/e6a4c69e6fa0adc901e6dc1228070a78.jpg"))
+            add(RickAndMorty("Alive","Jerry Smith","https://comicvine.gamespot.com/a/uploads/original/6/66303/4472081-tumblr_n04lnrmooh1rfbbc6o1_1280.png"))
         }
     }
     private fun onClick(position: Int){
-
+        val adapter = RickAndMortyAdapter(rickAndMortyList,this::onClick)
+        binding.recyclerView.adapter = adapter
+        rickAndMortyList.apply {
+            findNavController().navigate(R.id.firstFragment, bundleOf(
+                KEY_FOR_PASSWORD to rickAndMortyList[position].rank,KEY_FOR_USERNAME to rickAndMortyList[position].name,
+                KEY_FOR_IMG to rickAndMortyList[position].img))
+        }
         }
 
 }

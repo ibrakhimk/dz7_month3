@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.bumptech.glide.Glide
 import com.example.dz7_month3.databinding.ItemRickAndMortyBinding
 
 class RickAndMortyAdapter(
@@ -38,6 +39,7 @@ class RickAndMortyAdapter(
             binding.apply {
                 tvName.text = item.name
                 tvRang.text = item.rank
+                Glide.with(imgView).load(item.img).into(imgView)
             }
         }
     }

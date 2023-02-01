@@ -9,9 +9,8 @@
     <ImageView
         android:layout_gravity="center"
         android:id="@+id/img_view"
-        android:background="@drawable/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="140dp"
+        android:layout_height="150dp"/>
     <TextView
         android:layout_gravity="center"
         android:id="@+id/tv_rang"
